@@ -22,6 +22,9 @@ type Status = 'idle' | 'loading' | 'sent' | 'error';
         <div class="row gy-4">
           <div class="col-lg-5">
             <div class="info-wrap">
+              @if (p.city_image_path) {
+                <img [src]="p.city_image_path" [alt]="p.city" class="city-photo" loading="lazy" />
+              }
               <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
@@ -101,6 +104,16 @@ type Status = 'idle' | 'loading' | 'sent' | 'error';
         </div>
       </div>
     </section>
+  `,
+  styles: `
+    .city-photo {
+      display: block;
+      width: 100%;
+      height: 190px;
+      margin-bottom: 24px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
   `,
 })
 export class Contact {

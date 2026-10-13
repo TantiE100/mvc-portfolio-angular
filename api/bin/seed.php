@@ -18,8 +18,9 @@ $pdo->prepare('
     INSERT INTO profile (
         full_name, headline, typed_roles, about_intro, about_summary, about_extra,
         birth_date, website, phone, city, degree, email, freelance, address,
-        avatar_path, hero_path, latitude, longitude, map_span
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        avatar_path, hero_path, latitude, longitude, map_span,
+        stats_bg_path, city_image_path
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 ')->execute([
     'Santiago Echeverria',
     'Estudiante de Ingeniería de Sistemas y desarrollador backend',
@@ -40,6 +41,8 @@ $pdo->prepare('
     -17.377530,
     -66.128214,
     0.02,
+    'assets/img/cochabamba/cochabamba-panorama.jpg',
+    'assets/img/cochabamba/cochabamba-ciudad.jpg',
 ]);
 
 $socials = [
@@ -65,14 +68,14 @@ foreach ($stats as $row) {
 }
 
 $skills = [
-    [1, 'Go', 85],
-    [2, 'Node.js', 80],
-    [3, 'Next.js', 75],
-    [4, 'PostgreSQL', 80],
-    [5, 'Docker', 80],
-    [6, 'Kubernetes', 65],
+    [1, 'Go', 85, 'assets/img/tech/go.svg'],
+    [2, 'Node.js', 80, 'assets/img/tech/nodejs.svg'],
+    [3, 'Next.js', 75, 'assets/img/tech/nextjs.svg'],
+    [4, 'PostgreSQL', 80, 'assets/img/tech/postgresql.svg'],
+    [5, 'Docker', 80, 'assets/img/tech/docker.svg'],
+    [6, 'Kubernetes', 65, 'assets/img/tech/kubernetes.svg'],
 ];
-$stmt = $pdo->prepare('INSERT INTO skills (sort_order, name, percent) VALUES (?, ?, ?)');
+$stmt = $pdo->prepare('INSERT INTO skills (sort_order, name, percent, logo_path) VALUES (?, ?, ?, ?)');
 foreach ($skills as $row) {
     $stmt->execute($row);
 }
@@ -85,6 +88,7 @@ $resume = [
         'Universidad Privada Franz Tamayo (Unifranz), Cochabamba',
         'Actualmente en sexto semestre. Materias enfocadas en programación, bases de datos y programación gráfica y multimedia.',
         null,
+        'assets/img/resume/unifranz-cochabamba.jpg',
     ],
     [
         'education', 2,
@@ -93,6 +97,7 @@ $resume = [
         'Colegio Capilla, Cochabamba',
         'Primaria y secundaria completas en el mismo colegio.',
         null,
+        'assets/img/cochabamba/plaza-14.jpg',
     ],
     [
         'experience', 1,
@@ -101,22 +106,23 @@ $resume = [
         'Proyectos personales y universitarios',
         null,
         '{"Servicios en Go y Node.js con PostgreSQL","Aplicaciones full stack con Next.js en el frontend","Entornos de desarrollo en contenedores con Docker y docker compose","Primeros despliegues en Kubernetes"}',
+        'assets/img/resume/repo-mvc-portfolio-angular.jpg',
     ],
 ];
-$stmt = $pdo->prepare('INSERT INTO resume_items (kind, sort_order, title, period, place, body, bullets) VALUES (?, ?, ?, ?, ?, ?, ?)');
+$stmt = $pdo->prepare('INSERT INTO resume_items (kind, sort_order, title, period, place, body, bullets, image_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 foreach ($resume as $row) {
     $stmt->execute($row);
 }
 
 $services = [
-    [1, 'bi bi-hdd-stack', 'Desarrollo backend', 'Servicios HTTP y APIs en Go y Node.js, con una separación clara entre transporte, dominio y acceso a datos.'],
-    [2, 'bi bi-database', 'Modelado de datos', 'Diseño de esquemas en PostgreSQL, migraciones versionadas y consultas preparadas.'],
-    [3, 'bi bi-box', 'Contenedores', 'Empaquetado de aplicaciones con Docker y docker compose, tanto para desarrollo como para entrega.'],
-    [4, 'bi bi-diagram-3', 'Fundamentos de Kubernetes', 'Manifiestos, services e ingress para llevar una aplicación en contenedores a un clúster.'],
-    [5, 'bi bi-window', 'Frontend con Next.js', 'Interfaces en React renderizadas en el servidor y conectadas a mis propias APIs.'],
-    [6, 'bi bi-file-earmark-text', 'Documentación técnica', 'READMEs, diagramas e informes que explican cómo ejecutar y extender un proyecto.'],
+    [1, 'bi bi-hdd-stack', 'Desarrollo backend', 'Servicios HTTP y APIs en Go y Node.js, con una separación clara entre transporte, dominio y acceso a datos.', 'assets/img/tech/go.svg'],
+    [2, 'bi bi-database', 'Modelado de datos', 'Diseño de esquemas en PostgreSQL, migraciones versionadas y consultas preparadas.', 'assets/img/tech/postgresql.svg'],
+    [3, 'bi bi-box', 'Contenedores', 'Empaquetado de aplicaciones con Docker y docker compose, tanto para desarrollo como para entrega.', 'assets/img/tech/docker.svg'],
+    [4, 'bi bi-diagram-3', 'Fundamentos de Kubernetes', 'Manifiestos, services e ingress para llevar una aplicación en contenedores a un clúster.', 'assets/img/tech/kubernetes.svg'],
+    [5, 'bi bi-window', 'Frontend con Next.js', 'Interfaces en React renderizadas en el servidor y conectadas a mis propias APIs.', 'assets/img/tech/nextjs.svg'],
+    [6, 'bi bi-file-earmark-text', 'Documentación técnica', 'READMEs, diagramas e informes que explican cómo ejecutar y extender un proyecto.', 'assets/img/tech/markdown.svg'],
 ];
-$stmt = $pdo->prepare('INSERT INTO services (sort_order, icon, title, description) VALUES (?, ?, ?, ?)');
+$stmt = $pdo->prepare('INSERT INTO services (sort_order, icon, title, description, logo_path) VALUES (?, ?, ?, ?, ?)');
 foreach ($services as $row) {
     $stmt->execute($row);
 }

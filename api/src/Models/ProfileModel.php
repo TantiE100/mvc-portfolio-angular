@@ -41,14 +41,14 @@ class ProfileModel
     public function getSkills(): array
     {
         return Database::connection()
-            ->query('SELECT name, percent FROM skills ORDER BY sort_order ASC')
+            ->query('SELECT name, percent, logo_path FROM skills ORDER BY sort_order ASC')
             ->fetchAll();
     }
 
     public function getResumeItems(string $kind): array
     {
         $stmt = Database::connection()->prepare(
-            'SELECT title, period, place, body, bullets
+            'SELECT title, period, place, body, bullets, image_path
              FROM resume_items
              WHERE kind = ?
              ORDER BY sort_order ASC'
@@ -80,7 +80,7 @@ class ProfileModel
     public function getServices(): array
     {
         return Database::connection()
-            ->query('SELECT icon, title, description FROM services ORDER BY sort_order ASC')
+            ->query('SELECT icon, title, description, logo_path FROM services ORDER BY sort_order ASC')
             ->fetchAll();
     }
 

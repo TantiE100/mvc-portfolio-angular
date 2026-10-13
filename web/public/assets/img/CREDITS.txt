@@ -1,0 +1,11 @@
+Fotografías usadas en este portafolio.
+Fuente: Wikimedia Commons. Licencias libres; se redimensionaron, sin otros cambios.
+
+ARCHIVO                                 ORIGINAL EN COMMONS                                                        LICENCIA       AUTOR
+cochabamba/cochabamba-panorama.jpg      File:Vista Panorámica de Cochabamba desde el Cerro San Pedro.jpg           CC BY 2.0      MollySVH
+cochabamba/cochabamba-ciudad.jpg        File:Cochabamba Ciudad 2.jpg                                               CC BY-SA 4.0   Parallelepiped09
+cochabamba/plaza-14.jpg                 File:Plaza Principal “14 de Septiembre”, Cochabamba, Bolivia - 16636838235.jpg  CC BY 2.0  Jan Beck
+resume/unifranz-cochabamba.jpg          File:Universidad Franz Tamayo - Unifranz Sede Cochabamba.jpg               CC BY-SA 4.0   IsmaelMontes
+
+Logos de tecnologías (tech/*.svg): Simple Icons (https://simpleicons.org), CC0 1.0. Las marcas pertenecen a sus dueños.
+resume/repo-mvc-portfolio-angular.jpg: captura propia del repositorio en GitHub.

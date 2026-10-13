@@ -25,7 +25,7 @@ import { Stats } from './sections/stats';
     <main class="main">
       <app-hero [profile]="d.profile" />
       <app-about [profile]="d.profile" />
-      <app-stats [stats]="d.stats" />
+      <app-stats [stats]="d.stats" [background]="d.profile.stats_bg_path" />
       <app-skills [skills]="d.skills" />
       <app-resume [profile]="d.profile" [education]="d.education" [experience]="d.experience" />
       @if (d.portfolio.length) {

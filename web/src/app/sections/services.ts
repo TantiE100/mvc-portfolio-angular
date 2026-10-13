@@ -14,7 +14,13 @@ import { Service } from '../core/models';
         <div class="row gy-4">
           @for (service of services(); track service.title; let i = $index) {
             <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" [attr.data-aos-delay]="100 * (i + 1)">
-              <div class="icon flex-shrink-0"><i [class]="service.icon"></i></div>
+              <div class="icon flex-shrink-0" [class.with-logo]="service.logo_path">
+                @if (service.logo_path) {
+                  <img [src]="service.logo_path" [alt]="service.title" />
+                } @else {
+                  <i [class]="service.icon"></i>
+                }
+              </div>
               <div>
                 <h4 class="title">{{ service.title }}</h4>
                 <p class="description">{{ service.description }}</p>
@@ -24,6 +30,23 @@ import { Service } from '../core/models';
         </div>
       </div>
     </section>
+  `,
+  styles: `
+    .icon.with-logo {
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      img {
+        width: 32px;
+        height: 32px;
+        transition: transform 0.3s;
+      }
+    }
+    .service-item:hover .icon.with-logo img {
+      transform: scale(1.15);
+    }
   `,
 })
 export class Services {

@@ -92,6 +92,23 @@ docker compose exec db psql -U portfolio_user -d portfolio -c "UPDATE skills SET
 docker compose exec db psql -U portfolio_user -d portfolio -c "SELECT created_at, name, subject FROM contact_messages ORDER BY created_at DESC;"
 ```
 
+## Imágenes por sección
+
+Todas las rutas de imagen se guardan en la base (migración `0004_section_images.sql`), igual que el resto del contenido.
+
+| Sección       | Imagen                                                        | Columna                         |
+|---------------|---------------------------------------------------------------|---------------------------------|
+| Inicio        | Foto de portada                                               | `profile.hero_path`             |
+| Sobre mí      | Foto de perfil                                                | `profile.avatar_path`           |
+| Estadísticas  | Panorámica de Cochabamba de fondo                             | `profile.stats_bg_path`         |
+| Habilidades   | Logo de cada tecnología                                       | `skills.logo_path`              |
+| Currículum    | Sede Unifranz Cochabamba, Plaza 14 de Septiembre, repo en GitHub | `resume_items.image_path`    |
+| Portafolio    | Capturas de los proyectos de la materia                       | `portfolio_items.image_path`    |
+| Servicios     | Logo de cada tecnología                                       | `services.logo_path`            |
+| Contacto      | Vista de la ciudad de Cochabamba                              | `profile.city_image_path`       |
+
+Las fotos de Cochabamba y Unifranz son de Wikimedia Commons (CC BY / CC BY-SA) y los logos son de Simple Icons (CC0). Autores y licencias en `web/public/assets/img/CREDITS.txt`, enlazado también desde el footer.
+
 ## Licencia de la plantilla
 
 iPortfolio es gratuita con atribución: los enlaces a BootstrapMade en el footer deben quedarse (ver `web/public/assets/TEMPLATE-LICENSE.txt`).

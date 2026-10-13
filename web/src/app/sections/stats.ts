@@ -6,7 +6,13 @@ import { Stat } from '../core/models';
   selector: 'app-stats',
   imports: [CountUp],
   template: `
-    <section id="stats" class="stats section">
+    <section
+      id="stats"
+      class="stats section"
+      [class.dark-background]="background()"
+      [class.with-photo]="background()"
+      [style.background-image]="background() ? 'url(' + background() + ')' : null"
+    >
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
           @for (stat of stats(); track stat.label) {
@@ -22,7 +28,24 @@ import { Stat } from '../core/models';
       </div>
     </section>
   `,
+  styles: `
+    .with-photo {
+      position: relative;
+      background-size: cover;
+      background-position: center 78%;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(4, 11, 20, 0.72);
+      }
+      .container {
+        position: relative;
+      }
+    }
+  `,
 })
 export class Stats {
   readonly stats = input.required<Stat[]>();
+  readonly background = input<string | null>(null);
 }

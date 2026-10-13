@@ -18,7 +18,13 @@ import { Skill } from '../core/models';
             <div class="col-lg-6">
               @for (skill of column; track skill.name) {
                 <div class="progress">
-                  <span class="skill"><span>{{ skill.name }}</span> <i class="val">{{ skill.percent }}%</i></span>
+                  <span class="skill">
+                    <span class="name">
+                      @if (skill.logo_path) {
+                        <img [src]="skill.logo_path" alt="" class="logo" />
+                      }
+                      {{ skill.name }}
+                    </span> <i class="val">{{ skill.percent }}%</i></span>
                   <div class="progress-bar-wrap">
                     <div
                       class="progress-bar"
@@ -36,6 +42,17 @@ import { Skill } from '../core/models';
         </div>
       </div>
     </section>
+  `,
+  styles: `
+    .name {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo {
+      width: 20px;
+      height: 20px;
+    }
   `,
 })
 export class Skills {

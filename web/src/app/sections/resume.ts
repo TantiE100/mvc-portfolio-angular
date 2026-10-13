@@ -43,6 +43,9 @@ import { Profile, ResumeItem } from '../core/models';
 
     <ng-template #resumeItem let-item>
       <div class="resume-item">
+        @if (item.image_path) {
+          <img [src]="item.image_path" [alt]="item.place ?? item.title" class="resume-img" loading="lazy" />
+        }
         <h4>{{ item.title }}</h4>
         <h5>{{ item.period }}</h5>
         <p><em>{{ item.place }}</em></p>
@@ -60,6 +63,17 @@ import { Profile, ResumeItem } from '../core/models';
     </ng-template>
   `,
   imports: [NgTemplateOutlet],
+  styles: `
+    .resume-img {
+      display: block;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 16px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+  `,
 })
 export class Resume {
   readonly profile = input.required<Profile>();

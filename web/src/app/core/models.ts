@@ -20,6 +20,8 @@ export interface Profile {
   latitude: number | null;
   longitude: number | null;
   map_span: number;
+  stats_bg_path: string | null;
+  city_image_path: string | null;
 }
 
 export interface SocialLink {
@@ -38,6 +40,7 @@ export interface Stat {
 export interface Skill {
   name: string;
   percent: number;
+  logo_path: string | null;
 }
 
 export interface ResumeItem {
@@ -46,6 +49,7 @@ export interface ResumeItem {
   place: string | null;
   body: string | null;
   bullets: string[];
+  image_path: string | null;
 }
 
 export interface PortfolioItem {
@@ -60,6 +64,7 @@ export interface Service {
   icon: string;
   title: string;
   description: string;
+  logo_path: string | null;
 }
 
 export interface PortfolioData {

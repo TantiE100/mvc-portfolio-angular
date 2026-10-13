@@ -14,6 +14,10 @@ import { Component, input } from '@angular/core';
           Diseñado por <a href="https://bootstrapmade.com/">BootstrapMade</a> |
           <a href="https://bootstrapmade.com/tools/">DevTools</a>
         </div>
+        <div class="credits">
+          Fotos de Cochabamba y Unifranz: Wikimedia Commons ·
+          <a href="assets/img/CREDITS.txt" target="_blank">créditos y licencias</a>
+        </div>
       </div>
     </footer>
   `,
